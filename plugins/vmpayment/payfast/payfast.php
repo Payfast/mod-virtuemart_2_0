@@ -22,7 +22,7 @@
  * @copyright   2012 PayFast (Pty) Ltd
  * @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
  * @link        http://www.payfast.co.za/help/virtuemart
- * @version     1.0
+ * @version     1.01
  */
 
 defined('_JEXEC') or die('Direct Access to ' . basename(__FILE__) . ' is not allowed.');
@@ -71,20 +71,19 @@ class plgVMPaymentPayFast extends vmPSPlugin
 
     function _getPayfastDetails($method)
     {
-    	//if ($method->sandbox)
-        if (false)
+    	if ($method->sandbox)
         {
             $payfastDetails = array(
-                'merchant_id' => '10000100',
-                'merchant_key' => '46f0cd694581a', 
+                'merchant_id' => SANDBOX_MERCHANT_ID,
+                'merchant_key' => SANDBOX_MERCHANT_KEY, 
                 'url' => 'https://sandbox.payfast.co.za/eng/process'
             );
         }
         else 
         {
             $payfastDetails = array(
-                'merchant_id' => '10000100',
-                'merchant_key' => '46f0cd694581a', 
+                'merchant_id' => $method->payfast_merchant_id,
+                'merchant_key' => $method->payfast_merchant_key, 
                 'url' => 'https://www.payfast.co.za/eng/process'
             );
         }
@@ -95,12 +94,12 @@ class plgVMPaymentPayFast extends vmPSPlugin
     function _getPaymentResponseHtml($payfastData, $payment_name) 
     {
         $html = "";
-    	/*vmdebug('paypal response', $payfastData);
+    	/*vmdebug('payfast response', $payfastData);
     
     	$html = '<table>' . "\n";
-    	$html .= $this->getHtmlRow('PAYPAL_PAYMENT_NAME', $payment_name);
-    	$html .= $this->getHtmlRow('PAYPAL_ORDER_NUMBER', $payfastData['invoice']);
-    	$html .= $this->getHtmlRow('PAYPAL_AMOUNT', $payfastData['mc_gross'] . " " . $payfastData['mc_currency']);
+    	$html .= $this->getHtmlRow('PAYFAST_PAYMENT_NAME', $payment_name);
+    	$html .= $this->getHtmlRow('PAYFAST_ORDER_NUMBER', $payfastData['invoice']);
+    	$html .= $this->getHtmlRow('PAYFAST_AMOUNT', $payfastData['mc_gross'] . " " . $payfastData['mc_currency']);
     
     	$html .= '</table>' . "\n";*/
     
