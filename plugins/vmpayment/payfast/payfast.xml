@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <install version="1.5" type="plugin" group="vmpayment" >
-    <name>VMPAYMENT_PAYFAST</name>
-    <creationDate>December 2012</creationDate>
+
+    <name>VM - Payment, PayFast</name>
+    <creationDate>May 2012</creationDate>
     <author>PayFast (Pty) Ltd</author>
     <authorUrl>http://www.payfast.co.za</authorUrl>
     <copyright>Copyright (C) 2012 PayFast. All rights reserved.</copyright>
     <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
-    <version>1.0</version>
-    <description><![CDATA[<a href="http://payfast.com" target="_blank">PayFast</a> ]]>
-    </description>
-
+    <version>2.0</version>
+    <description><![CDATA[<a href="http://payfast.com" target="_blank">PayFast</a> ]]></description>
+    
     <files>
-	<filename plugin="payfast">payfast.php</filename>
+        <filename plugin="payfast">payfast.php</filename>
+        <filename>payfast_common.inc</filename>
+        <filename>index.html</filename>
     </files>
+    
+    <media folder="images" destination="../images/stories/virtuemart/payment">
+	   <filename>payfast.png</filename>
+       <filename>payfastlogo.gif</filename>
+    </media>
+    
     <languages>
-	<language tag="en-GB">en-GB.plg_vmpayment_payfast.ini</language>
+	<language tag="en-GB">administrator\language\en-GB\en-GB.plg_vmpayment_payfast.ini</language>
     </languages>
     <params addpath="/administrator/components/com_virtuemart/elements">
+    
 	<param type="vmjpluginwarning" />
 	<param   type="spacer" default="VMPAYMENT_PAYFAST_PARAMS" level="level1" />
 	<param type="text" name="payfast_merchant_id"  size="50" label="VMPAYMENT_PAYFAST_MERCHANT_ID"
@@ -24,7 +33,7 @@
 	<param type="text" name="payfast_merchant_key"  size="50" label="VMPAYMENT_PAYFAST_MERCHANT_KEY"
              default="" description="VMPAYMENT_PAYFAST_MERCHANT_KEY_DESC" />
 
-	<param   type="spacer" default="VMPAYMENT_PAYFAST_SANDBOX_PARAMS" level="level1" />
+	<param type="spacer" default="VMPAYMENT_PAYFAST_SANDBOX_PARAMS" level="level1" />
 
 	<param name="sandbox" type="radio" default="1" label="VMPAYMENT_PAYFAST_SANDBOX" description="VMPAYMENT_PAYFAST_SANDBOX_DESC" >
 	    <option value="0">COM_VIRTUEMART_NO</option>

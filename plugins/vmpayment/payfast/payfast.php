@@ -22,7 +22,7 @@
  * @copyright   2012 PayFast (Pty) Ltd
  * @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
  * @link        http://www.payfast.co.za/help/virtuemart
- * @version     1.01
+ * @version     1.02
  */
 
 defined('_JEXEC') or die('Direct Access to ' . basename(__FILE__) . ' is not allowed.');
@@ -201,7 +201,7 @@ class plgVMPaymentPayFast extends vmPSPlugin
     
     	$usrBT = $order['details']['BT'];
     	$address = ((isset($order['details']['ST'])) ? $order['details']['ST'] : $order['details']['BT']);
-    
+
     	$vendorModel = new VirtueMartModelVendor();
     	$vendorModel->setId(1);
     	$vendor = $vendorModel->getVendor();
@@ -365,7 +365,7 @@ class plgVMPaymentPayFast extends vmPSPlugin
      */
     function plgVmOnPaymentNotification() 
     {
-    	if (!class_exists('VirtueMartModelOrders'))
+        if (!class_exists('VirtueMartModelOrders'))
     	    require( JPATH_VM_ADMINISTRATOR . DS . 'models' . DS . 'orders.php' );
 
         // Include PayFast Common File

@@ -24,9 +24,9 @@
 //// Create user agent string
 // User agent constituents (for cURL)
 define( 'PF_SOFTWARE_NAME', 'Virtuemart' );
-define( 'PF_SOFTWARE_VER', "1.0" );
+define( 'PF_SOFTWARE_VER', "2.0" );
 define( 'PF_MODULE_NAME', 'PayFast-Virtuemart' );
-define( 'PF_MODULE_VER', '1.0' );
+define( 'PF_MODULE_VER', '1.02' );
 
 // Features
 // - PHP
@@ -173,7 +173,7 @@ function pfValidSignature( $pfData = null, &$pfParamString = null )
  * @param $pfHost String Hostname to use 
  * @param $pfParamString String
  */
-function pfValidData( $pfHost = 'www.payfast.local', $pfParamString = '' )
+function pfValidData( $pfHost = 'www.payfast.co.za', $pfParamString = '' )
 {
     pflog( 'Host = '. $pfHost );
     pflog( 'Params = '. $pfParamString );
@@ -270,7 +270,7 @@ function pfValidIP( $sourceIP )
 {
     // Variable initialization
     $validHosts = array(
-        'www.payfast.local',
+        'www.payfast.co.za',
         'sandbox.payfast.co.za',
         'w1w.payfast.co.za',
         'w2w.payfast.co.za',
