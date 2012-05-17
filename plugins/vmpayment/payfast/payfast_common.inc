@@ -26,7 +26,7 @@
 define( 'PF_SOFTWARE_NAME', 'Virtuemart' );
 define( 'PF_SOFTWARE_VER', "2.0.6" );
 define( 'PF_MODULE_NAME', 'PayFast-Virtuemart' );
-define( 'PF_MODULE_VER', '1.02' );
+define( 'PF_MODULE_VER', '1.03' );
 
 // Features
 // - PHP

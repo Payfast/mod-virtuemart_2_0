@@ -22,7 +22,7 @@
  * @copyright   2012 PayFast (Pty) Ltd
  * @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
  * @link        http://www.payfast.co.za/help/virtuemart
- * @version     1.02
+ * @version     1.03
  */
 
 defined('_JEXEC') or die('Direct Access to ' . basename(__FILE__) . ' is not allowed.');
