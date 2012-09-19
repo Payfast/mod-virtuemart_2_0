@@ -1,4 +1,4 @@
-PayFast Virtuemart Module v1.3.1 for Virtuemart v2.0.6
+PayFast Virtuemart Module v1.3.2 for Virtuemart v2.0.6
 --------------------------------------------------------------
 Copyright © 2011 PayFast (Pty) Ltd
 
