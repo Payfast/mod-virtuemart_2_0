@@ -255,7 +255,7 @@ class plgVMPaymentPayFast extends vmPSPlugin
     	$this->storePSPluginInternalData($dbValues);
     
     	$html = '<form action="' . $payfastDetails['url'] .'" method="post" name="vm_payfast_form" >';
-    	$html.= '<input type="image" name="submit" src="\images\stories\virtuemart\payment\payfast.png" alt="Click to pay with PayFast - it is fast, free and secure!" />';
+    	$html.= '<input type="image" name="submit" src="/images/stories/virtuemart/payment/payfast.png" alt="Click to pay with PayFast - it is fast, free and secure!" />';
     	foreach ($post_variables as $name => $value) 
         {
     	    $html.= '<input type="hidden" name="' . $name . '" value="' . htmlspecialchars($value) . '" />';
