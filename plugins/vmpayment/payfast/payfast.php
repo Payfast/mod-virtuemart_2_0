@@ -48,6 +48,7 @@ class plgVMPaymentPayFast extends vmPSPlugin
     	$varsToPush = array(
             'payfast_merchant_key' => array('', 'char'),
             'payfast_merchant_id' => array('', 'char'),
+            'payfast_passphrase' => array('', 'char'),
     	    'payfast_verified_only' => array('', 'int'),
     	    'payment_currency' => array(0, 'int'),
     	    'sandbox' => array(0, 'int'),
@@ -224,7 +225,7 @@ class plgVMPaymentPayFast extends vmPSPlugin
     	}
     
     	$testReq = $method->debug == 1 ? 'YES' : 'NO';
-    	$post_variables = Array(
+        $post_variables = Array(
             // Merchant details
             'merchant_id' => $payfastDetails['merchant_id'],
             'merchant_key' => $payfastDetails['merchant_key'],
@@ -233,14 +234,32 @@ class plgVMPaymentPayFast extends vmPSPlugin
             'notify_url' => JROUTE::_(JURI::root() . 'index.php?option=com_virtuemart&view=pluginresponse&task=pluginnotification&tmpl=component&on=' . $order['details']['BT']->order_number .'&pm=' . $order['details']['BT']->virtuemart_paymentmethod_id."&XDEBUG_SESSION_START=session_name"."&o_id={$order['details']['BT']->order_number}"),
     
             // Item details
-        	'item_name' => JText::_('VMPAYMENT_payfast_ORDER_NUMBER') . ': ' . $order['details']['BT']->order_number,
-        	'item_description' => "",
-        	'amount' => number_format( sprintf( "%01.2f", $totalInPaymentCurrency ), 2, '.', '' ),
             'm_payment_id' => $order['details']['BT']->virtuemart_paymentmethod_id,
-            'currency_code' => $currency_code_3,
-            'custom_str1' => $order['details']['BT']->order_number,
-            'custom_int1' => ""
+            'amount' => number_format( sprintf( "%01.2f", $totalInPaymentCurrency ), 2, '.', '' ),
+            'item_name' => JText::_('VMPAYMENT_payfast_ORDER_NUMBER') . ': ' . $order['details']['BT']->order_number,
+            'item_description' => "",
+            
+            'custom_int1' => "",
+            'custom_str1' => $order['details']['BT']->order_number
             );
+        
+        foreach ($post_variables as $key => $val)
+        {
+             $pfOutput .= $key .'='. urlencode( trim( $val ) ) .'&';
+        }
+
+        $passPhrase = $method->payfast_passphrase;
+
+            if( empty( $passPhrase ) )
+        {
+            $pfOutput = substr( $pfOutput, 0, -1 );
+        }
+        else
+        {
+            $pfOutput = $pfOutput."passphrase=".urlencode( $passPhrase );
+        }
+
+        $post_variables['signature'] = md5( $pfOutput ); 
     
     	// Prepare data that should be stored in the database
     	$dbValues['order_number'] = $order['details']['BT']->order_number;

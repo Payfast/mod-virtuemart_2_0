@@ -32,6 +32,8 @@
              default="" description="VMPAYMENT_PAYFAST_MERCHANT_ID_DESC" />
 	<param type="text" name="payfast_merchant_key"  size="50" label="VMPAYMENT_PAYFAST_MERCHANT_KEY"
              default="" description="VMPAYMENT_PAYFAST_MERCHANT_KEY_DESC" />
+    <param type="text" name="payfast_passphrase"  size="50" label="PAYFAST PASSPHRASE"
+             default="" description="VMPAYMENT_PAYFAST_PASSPHRASE_DESC" />
 
 	<param type="spacer" default="VMPAYMENT_PAYFAST_SANDBOX_PARAMS" level="level1" />
 
@@ -63,6 +65,8 @@
              default="" description="VMPAYMENT_PAYFAST_MERCHANT_ID_DESC" />
 	<field type="text" name="payfast_merchant_key"  size="50" label="VMPAYMENT_PAYFAST_MERCHANT_KEY"
              default="" description="VMPAYMENT_PAYFAST_MERCHANT_KEY_DESC" />
+    <field type="text" name="payfast_passphrase"  size="50" label="VMPAYMENT_PAYFAST_PASSPHRASE"
+             default="" description="VMPAYMENT_PAYFAST_PASSPHRASE_DESC" />
 
 	<field	name="payment_logos" type="vmfiles" label="VMPAYMENT_PAYFAST_LOGOS"
              	description="VMPAYMENT_PAYFAST_LOGOS_DESC"
