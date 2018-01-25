@@ -193,8 +193,9 @@ class plgVMPaymentPayFast extends vmPSPlugin
     	$vendorModel->setId(1);
     	$vendor = $vendorModel->getVendor();
     	$this->getPaymentCurrency($method);
-    	$q = 'SELECT `currency_code_3` FROM `#__virtuemart_currencies` WHERE `virtuemart_currency_id`="' . $method->payment_currency . '" ';
-    	$db = &JFactory::getDBO();
+        $db = &JFactory::getDBO();
+    	$q = 'SELECT `currency_code_3` FROM `#__virtuemart_currencies` WHERE `virtuemart_currency_id`="'
+                . $db->quote( $method->payment_currency ) . '" ';
     	$db->setQuery($q);
     	$currency_code_3 = $db->loadResult();
     
@@ -347,7 +348,8 @@ class plgVMPaymentPayFast extends vmPSPlugin
     	    return false;
     	
         $db = JFactory::getDBO();
-    	$query = 'SELECT ' . $this->_tablename . '.`virtuemart_order_id` FROM ' . $this->_tablename. " WHERE  `order_number`= '" . $order_number . "'";
+    	$query = 'SELECT ' . $this->_tablename . '.`virtuemart_order_id` FROM ' . $this->_tablename .
+                " WHERE  `order_number`= '" . $db->quote( $order_number ) . "'";
     
     	$db->setQuery($query);
     	$virtuemart_order_id = $db->loadResult();
@@ -585,7 +587,7 @@ class plgVMPaymentPayFast extends vmPSPlugin
 
     	$db = JFactory::getDBO();
     	$q = 'SELECT * FROM `' . $this->_tablename . '` '
-    		. 'WHERE `virtuemart_order_id` = ' . $virtuemart_order_id;
+            . 'WHERE `virtuemart_order_id` = ' . $db->quote( $virtuemart_order_id );
     	$db->setQuery($q);
 
     	if (!($paymentTable = $db->loadObject())) 
@@ -595,7 +597,8 @@ class plgVMPaymentPayFast extends vmPSPlugin
     	}
     	
         $this->getPaymentCurrency($paymentTable);
-    	$q = 'SELECT `currency_code_3` FROM `#__virtuemart_currencies` WHERE `virtuemart_currency_id`="' . $paymentTable->payment_currency . '" ';
+    	$q = 'SELECT `currency_code_3` FROM `#__virtuemart_currencies` WHERE `virtuemart_currency_id`="' 
+                . $db->quote( $paymentTable->payment_currency ) . '" ';
     	$db = &JFactory::getDBO();
     	$db->setQuery($q);
     	$currency_code_3 = $db->loadResult();
